@@ -1,0 +1,89 @@
+#include <iostream>
+
+#include <cstring>
+
+
+
+void shakerSort(char arr[], int size) {
+
+    int left = 0;
+
+    int right = size - 1;
+
+    bool swapped = false;
+
+
+
+    while (left < right) {
+
+        // Зсувати найбільший символ до правого кінця
+
+        for (int i = left; i < right; ++i) {
+
+            if (arr[i] > arr[i + 1]) {
+
+                std::swap(arr[i], arr[i + 1]);
+
+                swapped = true;
+
+            }
+
+        }
+
+        --right;
+
+
+
+        // Зсувати найменший символ до лівого кінця
+
+        for (int i = right; i > left; --i) {
+
+            if (arr[i] < arr[i - 1]) {
+
+                std::swap(arr[i], arr[i - 1]);
+
+                swapped = true;
+
+            }
+
+        }
+
+        ++left;
+
+
+
+        // Якщо в одному проході не було жодного обміну, то масив вже відсортований
+
+        if (!swapped)
+
+            break;
+
+    }
+
+}
+
+
+
+int main() {
+
+    char arr[] = "Hello, World!";
+
+    int size = strlen(arr);
+
+
+
+    std::cout << "До сортування: " << arr << std::endl;
+
+
+
+    shakerSort(arr, size);
+
+
+
+    std::cout << "Після сортування: " << arr << std::endl;
+
+
+
+    return 0;
+
+}

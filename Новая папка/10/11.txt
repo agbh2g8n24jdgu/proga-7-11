@@ -1,0 +1,28 @@
+#include <iostream>
+#include <cmath>
+
+int main() {
+    double num1, num2;
+    std::cout << "Введіть перше число: ";
+    std::cin >> num1;
+    std::cout << "Введіть друге число: ";
+    std::cin >> num2;
+
+    // Обчислення модулів чисел
+    double mod1 = std::abs(num1);
+    double mod2 = std::abs(num2);
+
+    // Обчислення суми, різниці, добутку і частки модулів
+    double sum = mod1 + mod2;
+    double difference = mod1 - mod2;
+    double product = mod1 * mod2;
+    double quotient = mod1 / mod2;
+
+    // Виведення результатів
+    std::cout << "Сума модулів: " << sum << std::endl;
+    std::cout << "Різниця модулів: " << difference << std::endl;
+    std::cout << "Добуток модулів: " << product << std::endl;
+    std::cout << "Частка модулів: " << quotient << std::endl;
+
+    return 0;
+}

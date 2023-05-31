@@ -1,0 +1,133 @@
+(44 код)
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+bool isAscending(vector<int>& row) {
+    for (int i = 0; i < row.size() - 1; i++) {
+        if (row[i] > row[i + 1])
+            return false;
+    }
+    return true;
+}
+
+bool isDescending(vector<int>& row) {
+    for (int i = 0; i < row.size() - 1; i++) {
+        if (row[i] < row[i + 1])
+            return false;
+    }
+    return true;
+}
+
+int findMinOrderedRow(vector<vector<int>>& matrix) {
+    vector<vector<int>> orderedRows;
+    for (vector<int>& row : matrix) {
+        if (isAscending(row) || isDescending(row)) {
+            orderedRows.push_back(row);
+        }
+    }
+
+    if (orderedRows.empty()) {
+        return 0;
+    }
+
+    int min_value = orderedRows[0][0];
+    for (vector<int>& row : orderedRows) {
+        for (int element : row) {
+            if (element < min_value) {
+                min_value = element;
+            }
+        }
+    }
+
+    return min_value;
+}
+
+int main() {
+    int M, N;
+    cout << "Enter the number of rows (M): ";
+    cin >> M;
+    cout << "Enter the number of columns (N): ";
+    cin >> N;
+
+    vector<vector<int>> matrix(M, vector<int>(N));
+
+    cout << "Enter the matrix elements:" << endl;
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            cin >> matrix[i][j];
+        }
+    }
+
+    int min_ordered_row = findMinOrderedRow(matrix);
+
+    cout << "Minimum value among the elements of ordered rows: " << min_ordered_row << endl;
+
+    return 0;
+}
+
+(51 код)
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void swapRows(vector<vector<int>>& matrix, int row1, int row2) {
+    vector<int> temp = matrix[row1];
+    matrix[row1] = matrix[row2];
+    matrix[row2] = temp;
+}
+
+void swapRowsWithMinMaxElements(vector<vector<int>>& matrix) {
+    int min_element = matrix[0][0];
+    int max_element = matrix[0][0];
+    int min_row = 0;
+    int max_row = 0;
+
+    // Знаходимо мінімальний та максимальний елементи матриці
+    for (int i = 0; i < matrix.size(); i++) {
+        for (int j = 0; j < matrix[i].size(); j++) {
+            if (matrix[i][j] < min_element) {
+                min_element = matrix[i][j];
+                min_row = i;
+            }
+            if (matrix[i][j] > max_element) {
+                max_element = matrix[i][j];
+                max_row = i;
+            }
+        }
+    }
+
+    // Міняємо місцями рядки з мінімальним та максимальним елементами
+    swapRows(matrix, min_row, max_row);
+}
+
+int main() {
+    int M, N;
+    cout << "Enter the number of rows (M): ";
+    cin >> M;
+    cout << "Enter the number of columns (N): ";
+    cin >> N;
+
+    vector<vector<int>> matrix(M, vector<int>(N));
+
+    cout << "Enter the matrix elements:" << endl;
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            cin >> matrix[i][j];
+        }
+    }
+
+    swapRowsWithMinMaxElements(matrix);
+
+    cout << "Matrix after swapping rows with min and max elements:" << endl;
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}

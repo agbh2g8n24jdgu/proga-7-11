@@ -1,0 +1,48 @@
+#include <iostream>
+
+#include <string>
+
+#include <sstream>
+
+
+
+int countWords(const std::string& sentence) {
+
+    std::stringstream ss(sentence);
+
+    std::string word;
+
+    int count = 0;
+
+
+
+    while (ss >> word) {
+
+        ++count;
+
+    }
+
+
+
+    return count;
+
+}
+
+
+
+int main() {
+
+    std::string sentence = "Привіт, це приклад речення";
+
+    int wordCount = countWords(sentence);
+
+
+
+    std::cout << "Кількість слів: " << wordCount << std::endl;
+
+
+
+    return 0;
+
+}
+

@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cmath>
+
+bool isKnightMove(int x1, int y1, int x2, int y2) {
+    int deltaX = std::abs(x1 - x2);
+    int deltaY = std::abs(y1 - y2);
+
+    return (deltaX == 1 && deltaY == 2) || (deltaX == 2 && deltaY == 1);
+}
+
+int main() {
+    int x1, y1, x2, y2;
+    std::cout << "Введіть координати першого поля (x1, y1): ";
+    std::cin >> x1 >> y1;
+    std::cout << "Введіть координати другого поля (x2, y2): ";
+    std::cin >> x2 >> y2;
+
+    bool canKnightMove = isKnightMove(x1, y1, x2, y2);
+
+    if (canKnightMove) {
+        std::cout << "Кінь може перейти з одного поля на інше за один хід." << std::endl;
+    } else {
+        std::cout << "Кінь не може перейти з одного поля на інше за один хід." << std::endl;
+    }
+
+    return 0;
+}

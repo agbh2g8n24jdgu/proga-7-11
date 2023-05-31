@@ -1,0 +1,52 @@
+using System;
+
+
+
+class Program
+
+{
+
+    static void Main(string[] args)
+
+    {
+
+        // Початкові значення змінних
+
+        int A = 1;
+
+        int B = 2;
+
+        int C = 3;
+
+
+
+        // Виконуємо переміщення значень
+
+        int temp = A;
+
+        A = C;
+
+        C = B;
+
+        B = temp;
+
+
+
+        // Виводимо нові значення змінних
+
+        Console.WriteLine("Нові значення змінних:");
+
+        Console.WriteLine("A = " + A);
+
+        Console.WriteLine("B = " + B);
+
+        Console.WriteLine("C = " + C);
+
+
+
+        Console.ReadLine();
+
+    }
+
+}
+

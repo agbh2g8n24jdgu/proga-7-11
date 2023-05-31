@@ -1,0 +1,38 @@
+#include <iostream>
+
+// Припустимо, що тип TTime визначений вам і містить відповідні поля для годин, хвилин, секунд і т.д.
+
+struct TTime {
+    int hours;
+    int minutes;
+    int seconds;
+};
+
+void NextHour(TTime& time) {
+    if (time.hours >= 0 && time.hours < 23) {
+        ++time.hours;
+    }
+}
+
+int main() {
+    TTime time1 = {10, 30, 0}; // Приклади п'яти заданих моментів часу
+    TTime time2 = {23, 0, 0};
+    TTime time3 = {12, 45, 0};
+    TTime time4 = {5, 15, 30};
+    TTime time5 = {22, 0, 45};
+
+    NextHour(time1);
+    NextHour(time2);
+    NextHour(time3);
+    NextHour(time4);
+    NextHour(time5);
+
+    std::cout << "Час після NextHour:" << std::endl;
+    std::cout << "Час 1: " << time1.hours << ":" << time1.minutes << ":" << time1.seconds << std::endl;
+    std::cout << "Час 2: " << time2.hours << ":" << time2.minutes << ":" << time2.seconds << std::endl;
+    std::cout << "Час 3: " << time3.hours << ":" << time3.minutes << ":" << time3.seconds << std::endl;
+    std::cout << "Час 4: " << time4.hours << ":" << time4.minutes << ":" << time4.seconds << std::endl;
+    std::cout << "Час 5: " << time5.hours << ":" << time5.minutes << ":" << time5.seconds << std::endl;
+
+    return 0;
+}
